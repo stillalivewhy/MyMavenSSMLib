@@ -1,7 +1,7 @@
 package com.xmx.test;
 
-import com.xmx.ssm.entity.Student;
-import com.xmx.ssm.service.StudentService;
+import com.xmx.ssm.entity.User;
+import com.xmx.ssm.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -12,17 +12,26 @@ import java.util.Iterator;
 import java.util.List;
 
 @RunWith( SpringJUnit4ClassRunner.class )
-@ContextConfiguration(locations = {"classpath:spring-mvc.xml","classpath:spring-mybatis.xml"})
+@ContextConfiguration(locations = {"classpath*:spring-mybatis.xml"})
 public class MyTest {
     @Resource
-    private StudentService studentService;
+    private UserService userService;
 
     @Test
     public void test(){
-        List<Student> students = studentService.findAll();
-        Iterator<Student> studentIterator = students.iterator();
-        while(studentIterator.hasNext()){
-            System.out.println(studentIterator.next());
-        }
-    }
+        User user = new User();
+        user.setAddress("1");
+        user.setCity("1");
+        user.setEmail("1");
+        user.setMobile("1");
+        user.setPassword("1");
+        user.setUserName("1");
+        user.setUserType("1");
+        userService.insertUser(user);
+//        List<User> users = userService.findAll();
+//        for(int j=0;j<users.size();j++){
+//            System.out.println(users.get(j));
+//        }
+//        System.out.println(userService.deleteUserByName("1"));
+}
 }

@@ -15,12 +15,17 @@
     </context:component-scan>
 
     <!--开启注解模式-->
-    <mvc:annotation-driven/>
+
 
     <!--静态资源默认servlet配置-->
     <mvc:default-servlet-handler/>
 
-    <mvc:resources mapping="/WEB-INF/static/**" location="/WEB-INF/static/"/>
+    <mvc:annotation-driven/>
+    <mvc:resources mapping="/static/**" location="/static/"/>
+    <mvc:resources mapping="/css/**" location="/static/css/"/>
+    <mvc:resources mapping="/js/**" location="/static/js/"/>
+    <mvc:resources mapping="/img/**" location="/static/img/"/>
+
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/"/>
